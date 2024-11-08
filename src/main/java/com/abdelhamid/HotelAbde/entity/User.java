@@ -1,5 +1,4 @@
 package com.abdelhamid.HotelAbde.entity;
-
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -34,6 +33,8 @@ public class User implements UserDetails {
     private String password;
 
     private String role;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Booking> bookings = new ArrayList<>();
 
     @Override
